@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Para ti 💌</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      overflow: hidden;
+      font-family: 'Courier New', monospace;
+      background: linear-gradient(to top, #fff8dc, #ecf0fc);
+      position: relative;
+    }
+
+    /* Estilo "papel antiguo" */
+    .container {
+      background: #fff8dc;
+      border: 2px solid #e0c097;
+      padding: 30px;
+      padding-bottom: 50px; /* Espacio para el botón  esto es nuevo, remover si es necesario*/
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+      max-width: 935px;
+      margin: 100px auto;
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+    }
+
+    .button {
+      background-color: #b77b57;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      margin-top: 20px;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .button:hover {
+      background-color: #935f44;
+    }
+
+    .message {
+      white-space: pre-wrap;
+      text-align: justify;
+      font-size: 25px;
+      font-family: 'Dancing Script', cursive;
+      line-height: 1.7; /* Espaciado entre líneas */
+      margin-top: 20px;
+      min-height: 100px;
+    }
+
+    /* Corazones flotando */
+    .heart {
+      position: absolute;
+      color: #ff69b4;
+      animation: float 10s infinite ease-in;
+      font-size: 20px;
+      opacity: 0.6;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) translateX(0);
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-10vh) translateX(20px);
+        opacity: 0;
+      }
+    }
+
+
+    
+  </style>
+</head>
+<body>
+  <script>
+    // Corazones flotando
+    for (let i = 0; i < 15; i++) {
+      let heart = document.createElement("div");
+      heart.className = "heart";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (5 + Math.random() * 5) + "s";
+      heart.innerText = "❤️";
+      document.body.appendChild(heart);
+    }
+  </script>
+
+  <div class="container">
+    <h2>Second Month</h2>
+    <button class="button" onclick="mostrarCarta()">Open</button>
+    <div class="message" id="mensaje"></div>
+  </div>
+
+  <script>
+    const texto = `Hola mi amor 💙
+Hoy celebramos un mes más juntos, aunque no es un aniversario tradicional, para mí es un motivo de alegría. No hacen falta fechas exactas para saber que estar con vos es algo bonito, algo que vale la pena. Pero igual, me gusta recordarlo y celebrarlo. Porque estás, porque seguimos, porque me hacés feliz.
+Con vos todo se siente más natural, más sincero, más real.
+
+Att. El que sigue eligiéndote,
+Luis Saravia`;
+
+    let i = 0;
+    function mostrarCarta() {
+      document.getElementById("mensaje").innerHTML = "";
+      i = 0;
+      typeWriter();
+    }
+
+    function typeWriter() {
+      if (i < texto.length) {
+        document.getElementById("mensaje").innerHTML += texto.charAt(i);
+        i++;
+        setTimeout(typeWriter, 50); // velocidad del efecto
+      }
+    }
+  </script>
+</body>
+</html>
